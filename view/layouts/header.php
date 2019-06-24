@@ -2,7 +2,7 @@
 <html>
 <!-- the head section -->
 <head>
-    <title>My Guitar Shop</title>
+    <title>Management Customers System</title>
     <link rel="stylesheet" type="text/css"
           href="main.css">
 </head>

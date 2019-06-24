@@ -5,10 +5,11 @@
  * Date: 6/24/2019
  * Time: 6:09 PM
  */
-session_start();
 
 require 'controller/Customer.php';
 require 'model/Customer.php';
+
+session_start();
 
 $action = 'index';
 if (isset($_REQUEST['action']) && $_REQUEST['action'] !== '') {
@@ -16,9 +17,8 @@ if (isset($_REQUEST['action']) && $_REQUEST['action'] !== '') {
 }
 
 if ($action === 'index') {
-    echo '<pre>';
     $customers = isset($_SESSION['customers']) ? $_SESSION['customers'] : [];
-    print_r($customers);
+    include 'view/customer/index.php';
 } else if ($action === 'add') {
     if (!empty($_POST)) {
         $customerID = filter_input(INPUT_POST, 'customer_id', FILTER_VALIDATE_INT);
