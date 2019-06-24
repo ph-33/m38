@@ -116,3 +116,7 @@ form {
 #add_product_form input[text] {
     width: 15em;
 }
+
+#form_search {
+    margin-bottom: 10px;
+}

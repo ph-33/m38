@@ -17,7 +17,18 @@ if (isset($_REQUEST['action']) && $_REQUEST['action'] !== '') {
 }
 
 if ($action === 'index') {
-    $customers = isset($_SESSION['customers']) ? $_SESSION['customers'] : [];
+    $data = isset($_SESSION['customers']) ? $_SESSION['customers'] : [];
+    $query = filter_input(INPUT_GET, 's');
+    if ($query !== null && $query !== '') {
+        $customers = [];
+        foreach ($data as $item) {
+            if ($item->getName() === $query) {
+                $customers[] = $item;
+            }
+        }
+    } else {
+        $customers = $data;
+    }
     include 'view/customer/index.php';
 } else if ($action === 'add') {
     if (!empty($_POST)) {
