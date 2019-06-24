@@ -67,4 +67,15 @@ if ($action === 'index') {
     } else {
         include 'view/customer/add.php';
     }
+} elseif ($action === 'delete') {
+    $customerID = filter_input(INPUT_POST, 'customer_id');
+    $data = isset($_SESSION['customers']) ? $_SESSION['customers'] : [];
+    foreach ($data as $index => $item) {
+        if ($item->getCustomerID() == $customerID) {
+            unset($_SESSION['customers'][$index]);
+            break;
+        }
+    }
+    // Redirect to page index
+    header('Location: index.php');
 }
